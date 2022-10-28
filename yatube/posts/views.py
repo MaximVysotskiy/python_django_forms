@@ -6,7 +6,6 @@ from .forms import PostForm
 from .models import Group, Post, User
 
 
-
 def index(request):
     post_list = Post.objects.all().order_by('-pub_date')
     paginator = Paginator(post_list, DISPLAYED_POSTS)
@@ -68,7 +67,7 @@ def post_detail(request, post_id):
 
 def post_create(request):
 
-    form = PostForm(request.POST  or None)
+    form = PostForm(request.POST or None)
 
     if form.is_valid():
 

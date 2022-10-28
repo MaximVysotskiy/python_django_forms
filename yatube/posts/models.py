@@ -18,7 +18,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE, 
+        on_delete=models.CASCADE,
         related_name='posts')
     group = models.ForeignKey(
         Group,
@@ -26,9 +26,8 @@ class Post(models.Model):
         null=True,
         on_delete=models.SET_NULL,
         related_name='posts')
+    
     class Meta:
-       ordering = ['-id']
-
-       
+        ordering = ['-id']
     def __str__(self):
         return self.text
