@@ -6,7 +6,7 @@
 <main>
   <div class="container py-5">        
     <h1>Все посты пользователя {{ post.author.username }} </h1>
-    <h3>Всего постов: {{ count }} </h3>   
+    <h3>Всего постов: {{ post.author.posts.count }} </h3>   
     <article>
       {% for post in page_obj %}
       <ul>
