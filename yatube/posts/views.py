@@ -7,7 +7,8 @@ from .utils import get_page_context
 
 
 def index(request):
-    context = get_page_context(Post.objects.all().select_related('group'), request)
+    post = Post.objects.all().select_related('group')
+    context = get_page_context(post, request)
     return render(request, 'posts/index.html', context)
 
 
