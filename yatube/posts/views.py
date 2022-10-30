@@ -1,9 +1,21 @@
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 
-from .utils import get_page_context
 from .forms import PostForm
 from .models import Group, Post, User
+from .constants import DISPLAYED_POSTS
+
+
+def get_page_context(queryset, request):
+    paginator = Paginator(queryset, DISPLAYED_POSTS)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return {
+        'paginator': paginator,
+        'page_number': page_number,
+        'page_obj': page_obj,
+    }
 
 
 def index(request):
